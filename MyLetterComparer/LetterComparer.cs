@@ -1,7 +1,36 @@
 namespace MyLetterComparer;
 
+using System.Text;
+
 public class LetterComparer
 {
+    /// <summary>
+    /// Removes accents from a character, treating accented vowels and ñ as their base equivalents.
+    /// For example: á, é, í, ó, ú, ü → a, e, i, o, u, u and ñ → n
+    /// </summary>
+    /// <param name="character">The character to remove accents from</param>
+    /// <returns>The character without accents</returns>
+    private char RemoveAccents(char character)
+    {
+        // Handle specific Latin American accented characters
+        return character switch
+        {
+            'á' or 'à' or 'ä' or 'â' => 'a',
+            'Á' or 'À' or 'Ä' or 'Â' => 'a',
+            'é' or 'è' or 'ë' or 'ê' => 'e',
+            'É' or 'È' or 'Ë' or 'Ê' => 'e',
+            'í' or 'ì' or 'ï' or 'î' => 'i',
+            'Í' or 'Ì' or 'Ï' or 'Î' => 'i',
+            'ó' or 'ò' or 'ö' or 'ô' => 'o',
+            'Ó' or 'Ò' or 'Ö' or 'Ô' => 'o',
+            'ú' or 'ù' or 'ü' or 'û' => 'u',
+            'Ú' or 'Ù' or 'Ü' or 'Û' => 'u',
+            'ñ' => 'n',
+            'Ñ' => 'n',
+            _ => character
+        };
+    }
+
     /// <summary>
     /// Validates that both characters are either letters or digits,
     /// and that they are the same type (both letters or both digits).
@@ -35,7 +64,8 @@ public class LetterComparer
     }
 
     /// <summary>
-    /// Compares two letters alphabetically.
+    /// Compares two letters alphabetically, treating accented characters as their base equivalents.
+    /// For example: á and a are considered the same, ñ and n are considered the same.
     /// </summary>
     /// <param name="letter1">The first letter</param>
     /// <param name="letter2">The second letter</param>
@@ -48,9 +78,9 @@ public class LetterComparer
     {
         ArgumentValidation(letter1, letter2);
 
-        // Convert to lowercase for case-insensitive comparison
-        char l1 = char.ToLower(letter1);
-        char l2 = char.ToLower(letter2);
+        // Convert to lowercase and remove accents for comparison
+        char l1 = char.ToLower(RemoveAccents(letter1));
+        char l2 = char.ToLower(RemoveAccents(letter2));
 
         if (l1 == l2)
             return 0;
