@@ -165,29 +165,28 @@ BEGIN
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Cannot change book_copy_id of a borrow';
   END IF;
 
-  -- If status did not change, nothing to do
+  -- Handle status change
   IF OLD.status = NEW.status THEN
     -- no-op
+  ELSEIF NEW.status = 0 THEN
+    -- LOST: set book copy LOST and penalize user
+    UPDATE BookCopies SET status = 0 WHERE id = OLD.book_copy_id;
+    SET NEW.return_date = NOW();
+    SELECT penalty_weight INTO penalty FROM BookCopies WHERE id = OLD.book_copy_id;
+    UPDATE Users
+    SET max_concurrent_borrows = CASE
+      WHEN max_concurrent_borrows - penalty < 0 THEN -1
+      ELSE max_concurrent_borrows - penalty
+    END
+    WHERE id = OLD.user_id;
+  ELSEIF NEW.status = 2 THEN
+    -- RETURNED: set book copy AVAILABLE
+    UPDATE BookCopies SET status = 2 WHERE id = OLD.book_copy_id;
+    SET NEW.return_date = NOW();
   ELSE
-    -- If new status is LOST -> set book copy LOST and penalize user
-    IF NEW.status = 0 THEN
-      UPDATE BookCopies SET status = 0 WHERE id = OLD.book_copy_id;
-      SET NEW.return_date = NOW();
-      SELECT penalty_weight INTO penalty FROM BookCopies WHERE id = OLD.book_copy_id;
-      UPDATE Users
-      SET max_concurrent_borrows = CASE
-        WHEN max_concurrent_borrows - penalty < 0 THEN -1
-        ELSE max_concurrent_borrows - penalty
-      END
-      WHERE id = OLD.user_id;
-    -- If new status is RETURNED -> set book copy AVAILABLE
-    ELSEIF NEW.status = 2 THEN
-      UPDATE BookCopies SET status = 2 WHERE id = OLD.book_copy_id;
-      SET NEW.return_date = NOW();
-    ELSE
-      SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Invalid new status for borrow update';
-    END IF;
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Invalid new status for borrow update';
   END IF;
+
 END$$
 
 DELIMITER ;
