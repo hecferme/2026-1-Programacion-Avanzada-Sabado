@@ -25,5 +25,5 @@ public partial class Book
 
     public virtual ICollection<Bookcopy> Bookcopies { get; set; } = new List<Bookcopy>();
 
-    public virtual ICollection<Theme> Themes { get; set; } = new List<Theme>();
+    public virtual ICollection<Booktheme> Bookthemes { get; set; } = new List<Booktheme>();
 }

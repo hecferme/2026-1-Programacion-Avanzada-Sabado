@@ -23,6 +23,8 @@ public partial class MySqlDbContext : DbContext
 
     public virtual DbSet<Bookauthor> Bookauthors { get; set; }
 
+    public virtual DbSet<Booktheme> Bookthemes { get; set; }
+
     public virtual DbSet<Bookcopy> Bookcopies { get; set; }
 
     public virtual DbSet<Borrow> Borrows { get; set; }
@@ -98,28 +100,30 @@ public partial class MySqlDbContext : DbContext
             entity.Property(e => e.Title)
                 .HasMaxLength(300)
                 .HasColumnName("title");
+        });
 
-            entity.HasMany(d => d.Themes).WithMany(p => p.Books)
-                .UsingEntity<Dictionary<string, object>>(
-                    "Booktheme",
-                    r => r.HasOne<Theme>().WithMany()
-                        .HasForeignKey("ThemeId")
-                        .HasConstraintName("fk_bt_theme"),
-                    l => l.HasOne<Book>().WithMany()
-                        .HasForeignKey("BookId")
-                        .HasConstraintName("fk_bt_book"),
-                    j =>
-                    {
-                        j.HasKey("BookId", "ThemeId")
-                            .HasName("PRIMARY")
-                            .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
-                        j
-                            .ToTable("bookthemes")
-                            .UseCollation("utf8mb4_0900_ai_ci");
-                        j.HasIndex(new[] { "ThemeId" }, "fk_bt_theme");
-                        j.IndexerProperty<int>("BookId").HasColumnName("book_id");
-                        j.IndexerProperty<int>("ThemeId").HasColumnName("theme_id");
-                    });
+        modelBuilder.Entity<Booktheme>(entity =>
+        {
+            entity.HasKey(e => new { e.BookId, e.ThemeId })
+                .HasName("PRIMARY")
+                .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+
+            entity
+                .ToTable("bookthemes")
+                .UseCollation("utf8mb4_0900_ai_ci");
+
+            entity.HasIndex(e => e.ThemeId, "fk_bt_theme");
+
+            entity.Property(e => e.BookId).HasColumnName("book_id");
+            entity.Property(e => e.ThemeId).HasColumnName("theme_id");
+
+            entity.HasOne(d => d.Book).WithMany(p => p.Bookthemes)
+                .HasForeignKey(d => d.BookId)
+                .HasConstraintName("fk_bt_book");
+
+            entity.HasOne(d => d.Theme).WithMany(p => p.Bookthemes)
+                .HasForeignKey(d => d.ThemeId)
+                .HasConstraintName("fk_bt_theme");
         });
 
         modelBuilder.Entity<Bookauthor>(entity =>
