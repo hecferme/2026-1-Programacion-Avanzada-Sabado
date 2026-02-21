@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="MyLibrary.DbModel/MyLibrary.DbModel.csproj" />
+  <Project Path="MyLibrary.JsonRepositoryModel/MyLibrary.JsonRepositoryModel.csproj" />
   <Project Path="MyLibrary.RepositoryModel/MyLibrary.RepositoryModel.csproj" />
   <Project Path="MyNewMvcProject/MyNewMvcProject.csproj" />
 </Solution>
