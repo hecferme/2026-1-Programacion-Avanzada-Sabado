@@ -57,8 +57,8 @@ public class AuthorsController : ControllerBase
             return NotFound();
         }
 
-        existingAuthor.FirstName = author.FirstName;
-        existingAuthor.LastName = author.LastName;
+        existingAuthor.First_Name = author.First_Name;
+        existingAuthor.Last_Name = author.Last_Name;
         existingAuthor.Bio = author.Bio;
         existingAuthor.CreatedAt = author.CreatedAt;
 

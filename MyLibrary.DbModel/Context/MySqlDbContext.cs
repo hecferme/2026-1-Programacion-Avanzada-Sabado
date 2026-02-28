@@ -63,10 +63,10 @@ public partial class MySqlDbContext : DbContext
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnType("timestamp")
                 .HasColumnName("created_at");
-            entity.Property(e => e.FirstName)
+            entity.Property(e => e.First_Name)
                 .HasMaxLength(100)
                 .HasColumnName("first_name");
-            entity.Property(e => e.LastName)
+            entity.Property(e => e.Last_Name)
                 .HasMaxLength(100)
                 .HasColumnName("last_name");
         });

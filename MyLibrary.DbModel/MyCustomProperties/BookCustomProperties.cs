@@ -7,12 +7,12 @@ public partial class Book
     public string AllBookAuthorsFirstNameLastName =>
         string.Join(" - ", Bookauthors
             .Where(ba => ba.Author != null)
-            .Select(ba => $"{ba.Author.FirstName} {ba.Author.LastName}"));
+            .Select(ba => $"{ba.Author.First_Name} {ba.Author.Last_Name}"));
 
     public string AllBookAuthorsLastNameFirstName =>
         string.Join(" - ", Bookauthors
             .Where(ba => ba.Author != null)
-            .Select(ba => $"{ba.Author.LastName} {ba.Author.FirstName}"));
+            .Select(ba => $"{ba.Author.Last_Name} {ba.Author.First_Name}"));
 
     public string AllBookThemeNames =>
         string.Join(" - ", Bookthemes

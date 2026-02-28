@@ -25,7 +25,7 @@ public class AuthorRepository : Repository<Author>, IAuthorRepository
     public async Task<IEnumerable<Author>> GetAuthorsByPartialNameAsync(string name)
     {
         return _context.Authors
-            .Where(a => (a.FirstName + " " + a.LastName).Contains(name))
+            .Where(a => (a.First_Name + " " + a.Last_Name).Contains(name))
             .ToList();
     }
 

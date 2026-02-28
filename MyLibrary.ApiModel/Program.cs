@@ -4,6 +4,7 @@ using MyLibrary.DbModel.Context;
 using MyLibrary.JsonRepositoryModel.Context;
 using MyLibrary.JsonRepositoryModel.Repositories;
 using MyLibrary.JsonRepositoryModel.Repositories.Interfaces;
+using Microsoft.AspNetCore.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,16 +34,8 @@ builder.Services.AddScoped<IThemeRepository, ThemeRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddControllers();
+builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
-    {
-        Title = "MyLibrary API",
-        Version = "v1",
-        Description = "API for MyLibrary with CRUD and custom queries"
-    });
-});
 
 // Configure CORS to allow all origins
 builder.Services.AddCors(options =>
@@ -60,12 +53,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyLibrary API v1");
-        c.RoutePrefix = "swagger";
-    });
+    // This creates the JSON file at: /openapi/v1.json
+    app.MapOpenApi();
 }
 
 app.UseCors("AllowAll");
