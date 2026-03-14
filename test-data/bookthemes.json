@@ -3,7 +3,11 @@
     "BookId": 1,
     "ThemeId": 2,
     "Book": null,
-    "Theme": null
+    "Theme": {
+      "Id": 2,
+      "Name": "Fantasy",
+      "Bookthemes": []
+    }
   },
   {
     "BookId": 2,

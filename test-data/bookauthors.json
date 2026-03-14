@@ -3,7 +3,14 @@
     "BookId": 1,
     "AuthorId": 1,
     "Role": "author",
-    "Author": null,
+    "Author": {
+      "Id": 1,
+      "First_Name": "George",
+      "Last_Name": "Orwell",
+      "Bio": "English novelist and essayist",
+      "CreatedAt": null,
+      "Bookauthors": []
+    },
     "Book": null
   },
   {

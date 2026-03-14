@@ -2,18 +2,62 @@
   {
     "Id": 1,
     "Isbn": "9780451524935",
-    "Title": "1984",
+    "Title": "1984.5",
     "Description": "Dystopian novel",
     "Publisher": "Secker \u0026 Warburg",
     "PublishedDate": null,
     "Pages": 328,
     "CreatedAt": null,
-    "Bookauthors": [],
-    "Bookcopies": [],
-    "Bookthemes": [],
-    "AllBookAuthorsFirstNameLastName": "",
-    "AllBookAuthorsLastNameFirstName": "",
-    "AllBookThemeNames": ""
+    "Bookauthors": [
+      {
+        "BookId": 1,
+        "AuthorId": 1,
+        "Role": "author",
+        "Author": {
+          "Id": 1,
+          "First_Name": "George",
+          "Last_Name": "Orwell",
+          "Bio": "English novelist and essayist",
+          "CreatedAt": null,
+          "Bookauthors": []
+        },
+        "Book": null
+      }
+    ],
+    "Bookcopies": [
+      {
+        "Id": 1,
+        "BookId": 1,
+        "Barcode": "BC-1984-001",
+        "Status": 0,
+        "PenaltyWeight": 0,
+        "AddedAt": null,
+        "Book": null,
+        "Borrows": []
+      },
+      {
+        "Id": 2,
+        "BookId": 1,
+        "Barcode": "BC-1984-002",
+        "Status": 2,
+        "PenaltyWeight": 0,
+        "AddedAt": null,
+        "Book": null,
+        "Borrows": []
+      }
+    ],
+    "Bookthemes": [
+      {
+        "BookId": 1,
+        "ThemeId": 2,
+        "Book": null,
+        "Theme": {
+          "Id": 2,
+          "Name": "Fantasy",
+          "Bookthemes": []
+        }
+      }
+    ]
   },
   {
     "Id": 2,
@@ -26,10 +70,7 @@
     "CreatedAt": null,
     "Bookauthors": [],
     "Bookcopies": [],
-    "Bookthemes": [],
-    "AllBookAuthorsFirstNameLastName": "",
-    "AllBookAuthorsLastNameFirstName": "",
-    "AllBookThemeNames": ""
+    "Bookthemes": []
   },
   {
     "Id": 3,
@@ -42,9 +83,6 @@
     "CreatedAt": null,
     "Bookauthors": [],
     "Bookcopies": [],
-    "Bookthemes": [],
-    "AllBookAuthorsFirstNameLastName": "",
-    "AllBookAuthorsLastNameFirstName": "",
-    "AllBookThemeNames": ""
+    "Bookthemes": []
   }
 ]

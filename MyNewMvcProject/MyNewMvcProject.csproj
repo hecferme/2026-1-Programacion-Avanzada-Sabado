@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyLibrary.DbModel\MyLibrary.DbModel.csproj" />
+    <ProjectReference Include="..\MyLibrary.JsonRepositoryModel\MyLibrary.JsonRepositoryModel.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -10,6 +10,16 @@ public class BookRepository : Repository<Book>, IBookRepository
     {
     }
 
+    public override async Task AddAsync(Book entity)
+    {
+        if (entity.Id == 0)
+        {
+            entity.Id = _context.Books.Any() ? _context.Books.Max(b => b.Id) + 1 : 1;
+        }
+        entity.CreatedAt = entity.CreatedAt ?? DateTime.Now;
+        await base.AddAsync(entity);
+    }
+
     public override async Task<Book?> GetByIdAsync(int id)
     {
         var book = await base.GetByIdAsync(id);
@@ -67,9 +77,9 @@ public class BookRepository : Repository<Book>, IBookRepository
     public async Task<IEnumerable<Book>> FindBooksAsync(string title, string description, string publisher)
     {
         var books = _context.Books
-            .Where(b => (string.IsNullOrEmpty(title) || (b.Title != null && b.Title.Contains(title))) &&
-                        (string.IsNullOrEmpty(description) || (b.Description != null && b.Description.Contains(description))) &&
-                        (string.IsNullOrEmpty(publisher) || (b.Publisher != null && b.Publisher.Contains(publisher))))
+            .Where(b => (string.IsNullOrEmpty(title) || (b.Title != null && b.Title.Contains(title, StringComparison.OrdinalIgnoreCase))) &&
+                        (string.IsNullOrEmpty(description) || (b.Description != null && b.Description.Contains(description, StringComparison.OrdinalIgnoreCase))) &&
+                        (string.IsNullOrEmpty(publisher) || (b.Publisher != null && b.Publisher.Contains(publisher, StringComparison.OrdinalIgnoreCase))))
             .ToList();
         foreach (var book in books)
         {
