@@ -1,6 +1,26 @@
 [
-  {"book_id":1,"theme_id":1},
-  {"book_id":2,"theme_id":2},
-  {"book_id":2,"theme_id":3},
-  {"book_id":3,"theme_id":2}
+  {
+    "BookId": 1,
+    "ThemeId": 2,
+    "Book": null,
+    "Theme": null
+  },
+  {
+    "BookId": 2,
+    "ThemeId": 1,
+    "Book": null,
+    "Theme": null
+  },
+  {
+    "BookId": 3,
+    "ThemeId": 3,
+    "Book": null,
+    "Theme": null
+  },
+  {
+    "BookId": 3,
+    "ThemeId": 1,
+    "Book": null,
+    "Theme": null
+  }
 ]

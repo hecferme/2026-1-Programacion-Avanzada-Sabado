@@ -1,5 +1,50 @@
 [
-  {"id":1,"isbn":"9780451524935","title":"1984","description":"Dystopian novel","publisher":"Secker & Warburg","published_date":"1949-06-08","pages":328},
-  {"id":2,"isbn":"9780544003415","title":"The Hobbit","description":"Fantasy novel","publisher":"George Allen & Unwin","published_date":"1937-09-21","pages":310},
-  {"id":3,"isbn":"9780747532743","title":"Harry Potter and the Philosopher's Stone","description":"First book of Harry Potter","publisher":"Bloomsbury","published_date":"1997-06-26","pages":223}
+  {
+    "Id": 1,
+    "Isbn": "9780451524935",
+    "Title": "1984",
+    "Description": "Dystopian novel",
+    "Publisher": "Secker \u0026 Warburg",
+    "PublishedDate": null,
+    "Pages": 328,
+    "CreatedAt": null,
+    "Bookauthors": [],
+    "Bookcopies": [],
+    "Bookthemes": [],
+    "AllBookAuthorsFirstNameLastName": "",
+    "AllBookAuthorsLastNameFirstName": "",
+    "AllBookThemeNames": ""
+  },
+  {
+    "Id": 2,
+    "Isbn": "9780544003415",
+    "Title": "The Hobbit",
+    "Description": "Fantasy novel",
+    "Publisher": "George Allen \u0026 Unwin",
+    "PublishedDate": null,
+    "Pages": 310,
+    "CreatedAt": null,
+    "Bookauthors": [],
+    "Bookcopies": [],
+    "Bookthemes": [],
+    "AllBookAuthorsFirstNameLastName": "",
+    "AllBookAuthorsLastNameFirstName": "",
+    "AllBookThemeNames": ""
+  },
+  {
+    "Id": 3,
+    "Isbn": "9780747532743",
+    "Title": "Harry Potter and the Philosopher\u0027s Stone",
+    "Description": "First book of Harry Potter",
+    "Publisher": "Hello world",
+    "PublishedDate": null,
+    "Pages": 223,
+    "CreatedAt": null,
+    "Bookauthors": [],
+    "Bookcopies": [],
+    "Bookthemes": [],
+    "AllBookAuthorsFirstNameLastName": "",
+    "AllBookAuthorsLastNameFirstName": "",
+    "AllBookThemeNames": ""
+  }
 ]

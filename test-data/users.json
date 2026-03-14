@@ -1,5 +1,26 @@
 [
-  {"id":1,"name":"Alice Smith","email":"alice@example.com","max_concurrent_borrows":1},
-  {"id":2,"name":"Bob Johnson","email":"bob@example.com","max_concurrent_borrows":-1},
-  {"id":3,"name":"Carol Lee","email":"carol@example.com","max_concurrent_borrows":3}
+  {
+    "Id": 1,
+    "Name": "Alice Smith",
+    "Email": "alice@example.com",
+    "MaxConcurrentBorrows": 0,
+    "CreatedAt": null,
+    "Borrows": []
+  },
+  {
+    "Id": 2,
+    "Name": "Bob Johnson",
+    "Email": "bob@example.com",
+    "MaxConcurrentBorrows": 0,
+    "CreatedAt": null,
+    "Borrows": []
+  },
+  {
+    "Id": 3,
+    "Name": "Carol Lee",
+    "Email": "carol@example.com",
+    "MaxConcurrentBorrows": 0,
+    "CreatedAt": null,
+    "Borrows": []
+  }
 ]

@@ -1,5 +1,30 @@
 [
-  {"book_id":1,"author_id":1,"role":"author"},
-  {"book_id":2,"author_id":3,"role":"author"},
-  {"book_id":3,"author_id":2,"role":"author"}
+  {
+    "BookId": 1,
+    "AuthorId": 1,
+    "Role": "author",
+    "Author": null,
+    "Book": null
+  },
+  {
+    "BookId": 3,
+    "AuthorId": 2,
+    "Role": "author",
+    "Author": null,
+    "Book": null
+  },
+  {
+    "BookId": 3,
+    "AuthorId": 3,
+    "Role": "author",
+    "Author": null,
+    "Book": null
+  },
+  {
+    "BookId": 2,
+    "AuthorId": 3,
+    "Role": "author",
+    "Author": null,
+    "Book": null
+  }
 ]
